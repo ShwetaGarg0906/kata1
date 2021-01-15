@@ -16,13 +16,14 @@ class StringCalculatorTest {
 	}
 	
 	@Test
-	@DisplayName("Adds method to handle an unknown amount of numbers")
+	@DisplayName("Adds method to support different delimiters")
 	void testAdd() {
 		assertAll(
 				()-> assertEquals(0,stringCalculator.Add("")),
 				()-> assertEquals(1,stringCalculator.Add("1")),
 				()-> assertEquals(3,stringCalculator.Add("1,2")),
-				()-> assertEquals(10,stringCalculator.Add("1,2,3,4,,"))
+				()-> assertEquals(10,stringCalculator.Add("1,2,3,4,,")),
+				()-> assertEquals(6,stringCalculator.Add("//.\n1.2.3.."))
 			 );
 	}
 
