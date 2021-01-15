@@ -16,7 +16,7 @@ class StringCalculatorTest {
 	}
 	
 	@Test
-	@DisplayName("fifth Step - Negatives not allowed")
+	@DisplayName("sixth Step - Negatives not allowed - show all")
 	void testAdd() {
 		assertAll(
 				()-> assertEquals(0,stringCalculator.Add("")),
@@ -24,7 +24,7 @@ class StringCalculatorTest {
 				()-> assertEquals(3,stringCalculator.Add("1,2")),
 				()-> assertEquals(10,stringCalculator.Add("1,2,3,4,,")),
 				()-> assertEquals(6,stringCalculator.Add("//.\n1.2.3..")),
-				()-> assertEquals(6,stringCalculator.Add("//.\n1.-2.3.."))	
+				()-> assertEquals(6,stringCalculator.Add("//.\n1.-2.3.-5."))	
 			 );
 	}
 }

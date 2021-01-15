@@ -7,6 +7,7 @@ public class StringCalculator {
 		int length = 0,sum=0,num=0;
 		String numString;
 		String[] numbers;
+		StringBuilder sb = new StringBuilder();
 		if(str.equals("")) {
 			return 0;
 		}
@@ -14,7 +15,9 @@ public class StringCalculator {
 			//convert to numbers array
 			if(str.startsWith("//")) {
 				String delimiter = str.substring(2,3);
+//				System.out.println("delimiter is "+delimiter);
 				numString = str.substring(4);
+//				System.out.println("string is "+numString);
 				numbers = numString.split(Pattern.quote(delimiter)); 
 			}
 			else {
@@ -26,15 +29,14 @@ public class StringCalculator {
 			for(String s : numbers){
 				num = Integer.parseInt(s);
 				if(num<0) {
-					break;
+					sb.append(num+",");
 				}
 				sum += num;
  			}
-			
 			if(num<0) {
-				System.out.println(num);
-				throw new IllegalArgumentException(num+ " is not allowed " );
+				throw new IllegalArgumentException(sb.toString()+ " are not allowed " );
 			}
+			
 			return sum;
 		}
 	}
