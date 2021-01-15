@@ -16,15 +16,16 @@ class StringCalculatorTest {
 	}
 	
 	@Test
-	@DisplayName("seventh Step - getCalledCount()")
+	@DisplayName("ninth Step - ignore numbers >1000")
 	void testAdd() {
 		assertAll(
 				()-> assertEquals(0,stringCalculator.Add("")),
 				()-> assertEquals(1,stringCalculator.Add("1")),
 				()-> assertEquals(3,stringCalculator.Add("1,2")),
 				()-> assertEquals(10,stringCalculator.Add("1,2,3,4,,")),
-				()-> assertEquals(6,stringCalculator.Add("//.\n1.2.3..")),
-				()-> assertEquals(6,stringCalculator.Add("//.\n1.-2.3.-5."))	
+//				()-> assertEquals(6,stringCalculator.Add("//.\n1.2.3..")),
+//				()-> assertEquals(6,stringCalculator.Add("//.\n1.-2.3.-5.")),
+				()-> assertEquals(10,stringCalculator.Add("//*\n1*2*3*4*1001*1111"))
 			 );
 	}
 }

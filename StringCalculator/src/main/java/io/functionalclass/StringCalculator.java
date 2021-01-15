@@ -47,9 +47,11 @@ public class StringCalculator {
 				if(num<0) {
 					sb.append(num+",");
 				}
-				sum += num;
+				else if(num<=1000){
+					sum += num;	
+				}
  			}
-			if(num<0) {
+			if(!sb.toString().equals("")) {
 				throw new IllegalArgumentException(sb.toString()+ " are not allowed " );
 			}
 			
