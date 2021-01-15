@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 	public int Add(String str) {
-		int length = 0,sum=0;
+		int length = 0,sum=0,num=0;
 		String numString;
 		String[] numbers;
 		if(str.equals("")) {
@@ -24,8 +24,17 @@ public class StringCalculator {
 			//performing the addition operation
 			length = numbers.length;
 			for(String s : numbers){
-				sum += Integer.parseInt(s);
+				num = Integer.parseInt(s);
+				if(num<0) {
+					break;
+				}
+				sum += num;
  			}
+			
+			if(num<0) {
+				System.out.println(num);
+				throw new IllegalArgumentException(num+ " is not allowed " );
+			}
 			return sum;
 		}
 	}
