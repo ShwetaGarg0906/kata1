@@ -3,7 +3,23 @@ package io.functionalclass;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
+	private int countCalled;
+	
+	public StringCalculator() {
+		countCalled = 0;	
+	}
+	
+	public int getCountCalled() {
+		return countCalled;
+	}
+	
+	public void displayCounter() {
+		System.out.println(getCountCalled());
+	}
+	
 	public int Add(String str) {
+		countCalled++;
+		displayCounter();
 		int length = 0,sum=0,num=0;
 		String numString;
 		String[] numbers;
