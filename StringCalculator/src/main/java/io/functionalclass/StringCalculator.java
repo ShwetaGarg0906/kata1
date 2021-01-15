@@ -21,7 +21,7 @@ public class StringCalculator {
 		countCalled++;
 		displayCounter();
 		int length = 0,sum=0,num=0;
-		String numString;
+		String numString,delimiter;
 		String[] numbers;
 		StringBuilder sb = new StringBuilder();
 		if(str.equals("")) {
@@ -30,9 +30,16 @@ public class StringCalculator {
 		else {
 			//convert to numbers array
 			if(str.startsWith("//")) {
-				String delimiter = str.substring(2,3);
+				if(str.substring(2,3).equals("[")) {
+					int lastIndex = str.indexOf(']');
+					delimiter = str.substring(3,lastIndex);
+					numString = str.substring(lastIndex+2);
+				}
+				else {
+					delimiter = str.substring(2,3);	
+					numString = str.substring(4);
+				}
 //				System.out.println("delimiter is "+delimiter);
-				numString = str.substring(4);
 //				System.out.println("string is "+numString);
 				numbers = numString.split(Pattern.quote(delimiter)); 
 			}

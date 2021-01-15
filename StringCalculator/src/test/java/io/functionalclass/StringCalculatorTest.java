@@ -16,7 +16,7 @@ class StringCalculatorTest {
 	}
 	
 	@Test
-	@DisplayName("ninth Step - ignore numbers >1000")
+	@DisplayName("tenth Step - delimiter with length greater than one")
 	void testAdd() {
 		assertAll(
 				()-> assertEquals(0,stringCalculator.Add("")),
@@ -25,7 +25,8 @@ class StringCalculatorTest {
 				()-> assertEquals(10,stringCalculator.Add("1,2,3,4,,")),
 //				()-> assertEquals(6,stringCalculator.Add("//.\n1.2.3..")),
 //				()-> assertEquals(6,stringCalculator.Add("//.\n1.-2.3.-5.")),
-				()-> assertEquals(10,stringCalculator.Add("//*\n1*2*3*4*1001*1111"))
+				()-> assertEquals(10,stringCalculator.Add("//*\n1*2*3*4*1001*1111")),
+				()-> assertEquals(10,stringCalculator.Add("//[**]\n1**2**3**4**1001**1111"))
 			 );
 	}
 }
