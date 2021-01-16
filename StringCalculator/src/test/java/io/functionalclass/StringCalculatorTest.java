@@ -16,7 +16,7 @@ class StringCalculatorTest {
 	}
 	
 	@Test
-	@DisplayName("eleventh Step - more than one  delimiter")
+	@DisplayName("twelfth Step - more than one  delimiter of variable length")
 	void testAdd() {
 		assertAll(
 				()-> assertEquals(0,stringCalculator.Add(""),"test case 1 failed"),
