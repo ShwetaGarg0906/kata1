@@ -20,36 +20,71 @@ public class StringCalculator {
 	public int Add(String str) {
 		countCalled++;
 		displayCounter();
-		int length = 0,sum=0,num=0;
+		int sum=0,num=0;
+		int i=0,noOfDel=0;
 		String numString,delimiter;
 		String[] numbers;
 		StringBuilder sb = new StringBuilder();
+		StringBuilder regex = new StringBuilder();
+		regex.append("\\r?");
+		
+		//if string is empty return 0
 		if(str.equals("")) {
+			System.out.println("empty string..");
 			return 0;
 		}
 		else {
-			//convert to numbers array
+			//splitting string to string array here....
 			if(str.startsWith("//")) {
+				//logic to fetch all the delimiters
 				if(str.substring(2,3).equals("[")) {
-					int lastIndex = str.indexOf(']');
-					delimiter = str.substring(3,lastIndex);
-					numString = str.substring(lastIndex+2);
-				}
+					//no of delimiters
+					i=2;
+					while(i!=-1) {
+						noOfDel++;
+						i = str.indexOf('[', i+1);
+					}
+					
+					System.out.println("no of delimiters are "+ noOfDel);
+					
+					//if noOfDelim more than 1 with each delimiter of length 1
+					if(noOfDel>1) {
+						int index = str.indexOf(']');
+						//filter all the delimiters
+						while(index!=-1) {
+							regex.append(Pattern.quote(str.substring(index-1, index))+"|");
+							//next possible position where ] could be found 
+							index = str.indexOf(']', index+1); 
+						}
+						//remove extra pipe(|)  
+						regex.replace(regex.length()-1,regex.length() , "");
+						index = str.lastIndexOf(']');
+						numString = str.substring(index+2);
+					}
+					//when there is only delimiter with length greater than 1 in []
+					else {
+						int lastIndex = str.indexOf(']');
+						delimiter = str.substring(3,lastIndex);
+						regex.append(Pattern.quote(delimiter));
+						numString = str.substring(lastIndex+2);	
+					}
+				}  
+				// one delimiter of size 1
 				else {
 					delimiter = str.substring(2,3);	
+					regex.append(Pattern.quote(delimiter));
 					numString = str.substring(4);
 				}
-//				System.out.println("delimiter is "+delimiter);
-//				System.out.println("string is "+numString);
-				numbers = numString.split(Pattern.quote(delimiter)); 
+				numbers = numString.split(regex.toString()); 
 			}
+			//handles test cases of up to 3 steps 
 			else {
 				numbers = str.split("\\r?\n|,");
 			}
 			
 			//performing the addition operation
-			length = numbers.length;
 			for(String s : numbers){
+				System.out.println(s);
 				num = Integer.parseInt(s);
 				if(num<0) {
 					sb.append(num+",");

@@ -16,17 +16,18 @@ class StringCalculatorTest {
 	}
 	
 	@Test
-	@DisplayName("tenth Step - delimiter with length greater than one")
+	@DisplayName("eleventh Step - more than one  delimiter")
 	void testAdd() {
 		assertAll(
-				()-> assertEquals(0,stringCalculator.Add("")),
-				()-> assertEquals(1,stringCalculator.Add("1")),
-				()-> assertEquals(3,stringCalculator.Add("1,2")),
-				()-> assertEquals(10,stringCalculator.Add("1,2,3,4,,")),
-//				()-> assertEquals(6,stringCalculator.Add("//.\n1.2.3..")),
+				()-> assertEquals(0,stringCalculator.Add(""),"test case 1 failed"),
+				()-> assertEquals(1,stringCalculator.Add("1"),"test case 2 failed"),
+				()-> assertEquals(3,stringCalculator.Add("1,2"),"test case 3 failed"),
+				()-> assertEquals(10,stringCalculator.Add("1,2,3,4,,"),"test case 4 failed"),
+				()-> assertEquals(6,stringCalculator.Add("//.\n1.2.3.."),"test case 5 failed"),
 //				()-> assertEquals(6,stringCalculator.Add("//.\n1.-2.3.-5.")),
-				()-> assertEquals(10,stringCalculator.Add("//*\n1*2*3*4*1001*1111")),
-				()-> assertEquals(10,stringCalculator.Add("//[**]\n1**2**3**4**1001**1111"))
+				()-> assertEquals(10,stringCalculator.Add("//*\n1*2*3*4*1001*1111"),"test case 6 failed"),
+				()-> assertEquals(10,stringCalculator.Add("//[**]\n1**2**3**4**1001**1111"),"test case 7 failed"),
+				()-> assertEquals(10,stringCalculator.Add("//[*][-]\n1*2*3*4*1001-1111"),"test case 8 failed")
 			 );
 	}
 }
